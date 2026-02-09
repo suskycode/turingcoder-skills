@@ -25,6 +25,7 @@
 
 1. 安装 skill 后，一键部署 workflow 到项目
    - `bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh`
+   - 模板来源：`references/workflows/integrate-skills.md`（随 skill 打包）
    - 在项目内生成：`.turing_coder_rules/workflows/integrate-skills.md`
    - 若目标已存在，先备份为 `.bak`，再覆盖。
 2. 在聊天中触发

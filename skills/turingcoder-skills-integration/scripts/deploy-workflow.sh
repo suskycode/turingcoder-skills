@@ -4,7 +4,7 @@ set -euo pipefail
 PROJECT_ROOT="${1:-$(pwd)}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-TEMPLATE="${SKILL_ROOT}/.turing_coder_rules/workflows/integrate-skills.md"
+TEMPLATE="${SKILL_ROOT}/references/workflows/integrate-skills.md"
 TARGET_DIR="${PROJECT_ROOT}/.turing_coder_rules/workflows"
 TARGET_FILE="${TARGET_DIR}/integrate-skills.md"
 

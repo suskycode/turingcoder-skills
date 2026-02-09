@@ -16,6 +16,7 @@ This skill bootstraps skills capability for a TuringCoder project.
 
 1. Deploy project workflow with:
    - `bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh`
+   - Template source: `references/workflows/integrate-skills.md` (bundled in this skill).
 2. Trigger workflow in chat with "帮我集成下skills能力".
 3. Bootstrap creates root `AGENTS.md`.
 4. Bootstrap creates `.turing_coder_rules/AGENTS.md` as symlink to `../AGENTS.md`.
