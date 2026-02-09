@@ -6,7 +6,7 @@ ROOT_AGENTS="${ROOT_DIR}/AGENTS.md"
 RULES_DIR="${ROOT_DIR}/.turing_coder_rules"
 RULES_AGENTS_LINK="${RULES_DIR}/AGENTS.md"
 WORKFLOW_DIR="${RULES_DIR}/workflows"
-AGENT_SKILL_DIR="${ROOT_DIR}/.agent/skill"
+AGENT_SKILL_DIR="${ROOT_DIR}/.agent/skills"
 
 # Fixed sources for reproducible installs.
 FIND_SKILLS_PKG="${FIND_SKILLS_PKG:-openai/skills@find-skills}"
@@ -30,14 +30,14 @@ When users ask you to perform tasks, check if any of the available skills below 
 
 How to use skills:
 - Invoke: Bash("openskills read <skill-name>") ; if the skill is not listed/installed, use find-skills to search & install.
-- Skills are stored in this project at: `./.agent/skill/<skill-name>/`
+- Skills are stored in this project at: `./.agent/skills/<skill-name>/`
   - Bundled resources live under: `references/`, `scripts/`, `assets/` inside the skill folder.
 - IMPORTANT (path resolution):
   - When a skill requires running a bundled script or reading bundled files, ALWAYS set the working directory to the skill folder first:
-    - Bash("cd ./.agent/skill/<skill-name> && python3 scripts/<script>.py ...")
-    - Bash("cd ./.agent/skill/<skill-name> && bash scripts/<script>.sh ...")
+    - Bash("cd ./.agent/skills/<skill-name> && python3 scripts/<script>.py ...")
+    - Bash("cd ./.agent/skills/<skill-name> && bash scripts/<script>.sh ...")
   - Do NOT assume the process working directory is the project root; explicitly `cd` before using relative paths.
-- If `openskills read` output includes a base directory, prefer that path; otherwise use `./.agent/skill/<skill-name>/` as the base directory.
+- If `openskills read` output includes a base directory, prefer that path; otherwise use `./.agent/skills/<skill-name>/` as the base directory.
 
 Usage notes:
 - Only use skills listed in <available_skills> below

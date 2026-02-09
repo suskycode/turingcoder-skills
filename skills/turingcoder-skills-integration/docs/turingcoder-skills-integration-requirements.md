@@ -7,7 +7,7 @@
 ## 2. 命令分工（关键约束）
 
 - 安装“集成能力 skill”：
-  - `openskills install <skill-url>`
+  - `npx openskills install https://github.com/suskycode/turingcoder-skills -u`
 - 安装 `find-skills` 发现的其他技能：
   - `npx skills add <package>`
 - 预装基础技能：
@@ -17,14 +17,14 @@
 
 - 规则目录：`.turing_coder_rules`
 - 工作流目录：`.turing_coder_rules/workflows`
-- skills 目录：`.agent/skill`
+- skills 目录：`.agent/skills`
 - root 规则文件：`AGENTS.md`
 - 规则目录下软链接：`.turing_coder_rules/AGENTS.md -> ../AGENTS.md`
 
 ## 4. 自动集成流程
 
 1. 安装 skill 后，一键部署 workflow 到项目
-   - `bash ./.agent/skill/turingcoder-skills-integration/scripts/deploy-workflow.sh`
+   - `bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh`
    - 在项目内生成：`.turing_coder_rules/workflows/integrate-skills.md`
    - 若目标已存在，先备份为 `.bak`，再覆盖。
 2. 在聊天中触发
@@ -35,10 +35,10 @@
 4. 创建目录
    - `.turing_coder_rules`
    - `.turing_coder_rules/workflows`
-   - `.agent/skill`
+   - `.agent/skills`
 5. 创建 root `AGENTS.md`
    - 写入统一 `<usage>` 模板。
-   - 模板中的 skills 路径必须是 `./.agent/skill/<skill-name>/`。
+   - 模板中的 skills 路径必须是 `./.agent/skills/<skill-name>/`。
 6. 创建软链接
    - `.turing_coder_rules/AGENTS.md -> ../AGENTS.md`
    - 若失败，立即中止，不降级复制。
@@ -69,7 +69,7 @@
 1. 空项目执行后存在：
    - `AGENTS.md`
    - `.turing_coder_rules/AGENTS.md`（软链接）
-   - `.agent/skill/`
+   - `.agent/skills/`
 2. 已有 `AGENTS.md` 时流程不覆盖文件。
 3. 成功路径下会显示 `sync` 提示和人工交互说明。
-4. 命令分工符合“第 2 节”，不混用 `openskills install` 与 `npx skills add`。
+4. 命令分工符合“第 2 节”，不混用 `npx openskills install ...` 与 `npx skills add`。

@@ -7,19 +7,19 @@ This skill bootstraps skills capability for a TuringCoder project.
 ## Normalized conventions
 
 - Rules directory: `.turing_coder_rules`
-- Skills directory: `.agent/skill`
+- Skills directory: `.agent/skills`
 - Agent selector for preinstall: `--agent Antigravity`
 - Integration skill install command:
-  - `openskills install <skill-url>`
+  - `npx openskills install https://github.com/suskycode/turingcoder-skills -u`
 
 ## Actions performed
 
 1. Deploy project workflow with:
-   - `bash ./.agent/skill/turingcoder-skills-integration/scripts/deploy-workflow.sh`
+   - `bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh`
 2. Trigger workflow in chat with "帮我集成下skills能力".
 3. Bootstrap creates root `AGENTS.md`.
 4. Bootstrap creates `.turing_coder_rules/AGENTS.md` as symlink to `../AGENTS.md`.
-5. Bootstrap creates `.agent/skill`.
+5. Bootstrap creates `.agent/skills`.
 6. Bootstrap preinstalls:
    - `find-skills`
    - `skill-creator`
@@ -42,7 +42,7 @@ This sync requires interactive manual selection and cannot be fully automated.
 
 ## Command split rule
 
-- `openskills install`:
-  only for installing this integration skill package.
+- `npx openskills install https://github.com/suskycode/turingcoder-skills -u`:
+  only for installing this integration skill package from this repo.
 - `npx skills add ...`:
   for installing skills discovered from `find-skills`.
