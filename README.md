@@ -27,7 +27,9 @@ bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh
 2. 在聊天里触发：
 
 ```text
-帮我集成下skills能力
+/integrate-skills.md 集成下skill
+# 或（自然语言兜底）
+帮我集成下skills
 ```
 
 3. 完成后执行：

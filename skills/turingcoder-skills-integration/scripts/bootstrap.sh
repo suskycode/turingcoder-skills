@@ -69,6 +69,20 @@ install_skill() {
   fi
 }
 
+create_agents_symlink() {
+  if ln -s ../AGENTS.md "${RULES_AGENTS_LINK}"; then
+    return 0
+  fi
+
+  cat >&2 <<'EOF'
+[ERROR] Failed to create symlink: .turing_coder_rules/AGENTS.md -> ../AGENTS.md
+[ERROR] On Windows, run this script from Git Bash.
+[ERROR] Also ensure symlink permission is enabled (Developer Mode or elevated policy may be required).
+[ERROR] Policy requires stopping here; fallback copy is not allowed.
+EOF
+  exit 1
+}
+
 main() {
   ensure_command npx
   ensure_command ln
@@ -86,7 +100,7 @@ main() {
     exit 1
   fi
 
-  ln -s ../AGENTS.md "${RULES_AGENTS_LINK}"
+  create_agents_symlink
 
   echo "[INFO] Installing preloaded skills..."
   install_skill "${FIND_SKILLS_REPO}" "${FIND_SKILLS_NAME}"

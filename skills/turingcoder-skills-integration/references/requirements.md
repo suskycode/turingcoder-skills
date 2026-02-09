@@ -16,7 +16,9 @@ This skill bootstraps skills capability for a TuringCoder project.
 1. Deploy project workflow with:
    - `bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh`
    - Template source: `references/workflows/integrate-skills.md` (bundled in this skill).
-2. Trigger workflow in chat with "帮我集成下skills能力".
+2. Trigger workflow in chat with:
+   - recommended: `/integrate-skills.md 集成下skill`
+   - natural-language fallback: `帮我集成下skills`
 3. Bootstrap creates root `AGENTS.md`.
 4. Bootstrap creates `.turing_coder_rules/AGENTS.md` as symlink to `../AGENTS.md`.
 5. Bootstrap creates `.agent/skills`.
@@ -41,6 +43,14 @@ After preinstall, always prompt user to run:
 - `openskills sync`
 
 This sync requires interactive manual selection and cannot be fully automated.
+
+## Windows compatibility (current scope)
+
+- Supported: Windows + Git Bash.
+- Not in scope: PowerShell-native bootstrap/deploy scripts.
+- Symlink policy is strict across platforms:
+  - If `.turing_coder_rules/AGENTS.md -> ../AGENTS.md` creation fails, stop immediately.
+  - Do not downgrade to file copy.
 
 ## Command split rule
 

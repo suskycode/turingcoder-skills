@@ -30,4 +30,5 @@ fi
 sed "s|__BOOTSTRAP_CMD__|${BOOTSTRAP_CMD}|g" "${TEMPLATE}" > "${TARGET_FILE}"
 
 echo "[DONE] Workflow deployed: ${TARGET_FILE}"
-echo "[INFO] Trigger it in chat with: 帮我集成下skills能力"
+echo "[INFO] Recommended trigger in chat: /integrate-skills.md 集成下skill"
+echo "[INFO] Natural-language fallback: 帮我集成下skills"

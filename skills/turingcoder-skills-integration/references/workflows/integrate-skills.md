@@ -1,6 +1,6 @@
 # integrate-skills
 
-When user intent is "帮我集成下skills能力" or equivalent:
+When user intent starts with `/integrate-skills.md` (recommended form: `/integrate-skills.md 集成下skill`), or is "帮我集成下skills", or equivalent:
 
 1. Run:
 ```bash
@@ -27,3 +27,4 @@ __BOOTSTRAP_CMD__
 4. Command policy reminder:
 - Use `npx openskills install https://github.com/suskycode/turingcoder-skills -u` only to install this integration skill.
 - Use `npx skills add ... --agent antigravity` for skills discovered via `find-skills`.
+- Prefer slash trigger for higher completion stability: `/integrate-skills.md 集成下skill`.

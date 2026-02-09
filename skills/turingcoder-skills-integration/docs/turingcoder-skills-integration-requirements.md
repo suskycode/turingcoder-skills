@@ -2,7 +2,7 @@
 
 ## 1. 背景与目标
 
-为 TuringCoder 提供一个可安装的“集成能力 skill”。开发者安装该 skill 后，在聊天中说“帮我集成下skills能力”等语义请求时，能够自动完成 skills 基础集成。
+为 TuringCoder 提供一个可安装的“集成能力 skill”。开发者安装该 skill 后，在聊天中可通过 slash 指令或自然语言请求触发，自动完成 skills 基础集成。
 
 ## 2. 命令分工（关键约束）
 
@@ -30,7 +30,8 @@
    - 在项目内生成：`.turing_coder_rules/workflows/integrate-skills.md`
    - 若目标已存在，先备份为 `.bak`，再覆盖。
 2. 在聊天中触发
-   - 输入：`帮我集成下skills能力`
+   - 推荐输入：`/integrate-skills.md 集成下skill`
+   - 自然语言兜底：`帮我集成下skills`
 3. 前置检查
    - 需有 `npx` 命令。
    - 若 `AGENTS.md` 已存在，立即中止（禁止覆盖）。
@@ -61,6 +62,16 @@
 - `sync` 需要用户在交互中选择同步项，无法纯命令行全自动完成。
 - 集成流程在给出提示后可结束（非阻塞），但应明确“尚需用户完成 sync”。
 
+## 5.1 Windows 兼容范围（当前）
+
+- 支持：Windows + Git Bash。
+- 不在范围：PowerShell 原生部署/引导脚本。
+- 前置要求：
+  - 已安装 Node.js（含 `npx`）；
+  - 在 Git Bash 中执行脚本；
+  - 具备创建符号链接权限（受系统策略影响）。
+- 软链接策略保持强约束：创建失败即退出，不降级复制。
+
 ## 6. 失败策略
 
 - root `AGENTS.md` 已存在：失败并退出。
@@ -77,3 +88,6 @@
 2. 已有 `AGENTS.md` 时流程不覆盖文件。
 3. 成功路径下会显示 `sync` 提示和人工交互说明。
 4. 命令分工符合“第 2 节”，不混用 `npx openskills install ...` 与 `npx skills add`。
+5. 触发符合“双通道”：
+   - slash 主触发：`/integrate-skills.md`（推荐写法：`/integrate-skills.md 集成下skill`）
+   - 自然语言兜底：`帮我集成下skills`。

@@ -6,7 +6,8 @@ description: Integrate skills capability into a TuringCoder project by bootstrap
 # TuringCoder Skills Integration
 
 Use this skill when the user asks to integrate skills capability into a TuringCoder project, such as:
-- "帮我集成下skills能力"
+- "/integrate-skills.md 集成下skill"
+- "帮我集成下skills"
 - "开启 skills 支持"
 - "初始化 TuringCoder 的 skills 能力"
 
@@ -21,7 +22,9 @@ bash ./.agent/skills/turingcoder-skills-integration/scripts/deploy-workflow.sh
 2. In chat, ask:
 
 ```text
-帮我集成下skills能力
+/integrate-skills.md 集成下skill
+# or natural-language fallback:
+帮我集成下skills
 ```
 
 3. The deployed workflow will run bootstrap:
