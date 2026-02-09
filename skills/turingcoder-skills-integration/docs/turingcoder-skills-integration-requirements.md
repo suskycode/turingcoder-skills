@@ -11,7 +11,8 @@
 - 安装 `find-skills` 发现的其他技能：
   - `npx skills add <package>`
 - 预装基础技能：
-  - `npx skills add <package> --agent Antigravity`
+  - `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
+  - `npx skills add https://github.com/anthropics/skills --skill skill-creator`
 
 ## 3. 标准目录与文件
 
@@ -46,7 +47,9 @@
 7. 预装技能
    - `find-skills`
    - `skill-creator`
-   - 命令统一使用：`npx skills add ... --agent Antigravity`
+   - 命令固定为：
+     - `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
+     - `npx skills add https://github.com/anthropics/skills --skill skill-creator`
 
 ## 5. 同步步骤（必须提示，非阻塞）
 

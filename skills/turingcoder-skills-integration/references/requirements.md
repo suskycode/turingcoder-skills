@@ -8,7 +8,6 @@ This skill bootstraps skills capability for a TuringCoder project.
 
 - Rules directory: `.turing_coder_rules`
 - Skills directory: `.agent/skills`
-- Agent selector for preinstall: `--agent Antigravity`
 - Integration skill install command:
   - `npx openskills install https://github.com/suskycode/turingcoder-skills -u`
 
@@ -24,7 +23,9 @@ This skill bootstraps skills capability for a TuringCoder project.
 6. Bootstrap preinstalls:
    - `find-skills`
    - `skill-creator`
-   using `npx skills add ... --agent Antigravity`.
+   using:
+   - `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
+   - `npx skills add https://github.com/anthropics/skills --skill skill-creator`
 
 ## Hard failure rules
 

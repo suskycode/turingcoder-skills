@@ -53,4 +53,4 @@ openskills sync
 - 创建项目根 `AGENTS.md`
 - 创建 `.turing_coder_rules/AGENTS.md -> ../AGENTS.md` 软链接
 - 创建 `.agent/skills/`
-- 预装 `find-skills` 与 `skill-creator`（`--agent Antigravity`）
+- 预装 `find-skills` 与 `skill-creator`

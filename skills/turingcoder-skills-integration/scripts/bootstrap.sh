@@ -9,8 +9,10 @@ WORKFLOW_DIR="${RULES_DIR}/workflows"
 AGENT_SKILL_DIR="${ROOT_DIR}/.agent/skills"
 
 # Fixed sources for reproducible installs.
-FIND_SKILLS_PKG="${FIND_SKILLS_PKG:-openai/skills@find-skills}"
-SKILL_CREATOR_PKG="${SKILL_CREATOR_PKG:-openai/skills@skill-creator}"
+FIND_SKILLS_REPO="${FIND_SKILLS_REPO:-https://github.com/vercel-labs/skills}"
+FIND_SKILLS_NAME="${FIND_SKILLS_NAME:-find-skills}"
+SKILL_CREATOR_REPO="${SKILL_CREATOR_REPO:-https://github.com/anthropics/skills}"
+SKILL_CREATOR_NAME="${SKILL_CREATOR_NAME:-skill-creator}"
 
 ensure_command() {
   local cmd="$1"
@@ -48,6 +50,19 @@ Usage notes:
 EOF
 }
 
+install_skill() {
+  local repo="$1"
+  local skill="$2"
+
+  echo "[INFO] Installing ${skill} from ${repo}..."
+  if ! npx skills add "${repo}" --skill "${skill}"; then
+    echo "[ERROR] Failed to install ${skill} from ${repo}." >&2
+    echo "[ERROR] Retry manually with:" >&2
+    echo "  npx skills add ${repo} --skill ${skill}" >&2
+    exit 1
+  fi
+}
+
 main() {
   ensure_command npx
   ensure_command ln
@@ -67,9 +82,9 @@ main() {
 
   ln -s ../AGENTS.md "${RULES_AGENTS_LINK}"
 
-  echo "[INFO] Installing preloaded skills with Antigravity agent..."
-  npx skills add "${FIND_SKILLS_PKG}" --agent Antigravity
-  npx skills add "${SKILL_CREATOR_PKG}" --agent Antigravity
+  echo "[INFO] Installing preloaded skills..."
+  install_skill "${FIND_SKILLS_REPO}" "${FIND_SKILLS_NAME}"
+  install_skill "${SKILL_CREATOR_REPO}" "${SKILL_CREATOR_NAME}"
 
   cat <<'EOF'
 [DONE] Base skills integration completed.
