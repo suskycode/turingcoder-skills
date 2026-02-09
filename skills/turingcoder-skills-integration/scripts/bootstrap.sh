@@ -13,7 +13,7 @@ FIND_SKILLS_REPO="${FIND_SKILLS_REPO:-https://github.com/vercel-labs/skills}"
 FIND_SKILLS_NAME="${FIND_SKILLS_NAME:-find-skills}"
 SKILL_CREATOR_REPO="${SKILL_CREATOR_REPO:-https://github.com/anthropics/skills}"
 SKILL_CREATOR_NAME="${SKILL_CREATOR_NAME:-skill-creator}"
-TARGET_AGENT="${TARGET_AGENT:-Antigravity}"
+TARGET_AGENT="${TARGET_AGENT:-antigravity}"
 
 ensure_command() {
   local cmd="$1"
@@ -25,6 +25,10 @@ ensure_command() {
 
 write_agents_md() {
   cat > "${ROOT_AGENTS}" <<'EOF'
+# AGENTS
+
+<skills_system priority="1">
+
 ## Available Skills
 
 <!-- SKILLS_TABLE_START -->
@@ -32,22 +36,23 @@ write_agents_md() {
 When users ask you to perform tasks, check if any of the available skills below can help complete the task more effectively. Skills provide specialized capabilities and domain knowledge.
 
 How to use skills:
-- Invoke: Bash("openskills read <skill-name>") ; if the skill is not listed/installed, use find-skills to search & install.
-- Skills are stored in this project at: `./.agent/skills/<skill-name>/`
-  - Bundled resources live under: `references/`, `scripts/`, `assets/` inside the skill folder.
-- IMPORTANT (path resolution):
-  - When a skill requires running a bundled script or reading bundled files, ALWAYS set the working directory to the skill folder first:
-    - Bash("cd ./.agent/skills/<skill-name> && python3 scripts/<script>.py ...")
-    - Bash("cd ./.agent/skills/<skill-name> && bash scripts/<script>.sh ...")
-  - Do NOT assume the process working directory is the project root; explicitly `cd` before using relative paths.
-- If `openskills read` output includes a base directory, prefer that path; otherwise use `./.agent/skills/<skill-name>/` as the base directory.
+- Invoke: Bash("openskills read <skill-name>")
+- The skill content will load with detailed instructions on how to complete the task
+- Base directory provided in output for resolving bundled resources (references/, scripts/, assets/)
 
 Usage notes:
 - Only use skills listed in <available_skills> below
 - Do not invoke a skill that is already loaded in your context
 - Each skill invocation is stateless
-- Skills found by `find-skills` must be installed via `npx skills add ... --agent Antigravity`
 </usage>
+
+<available_skills>
+
+
+</available_skills>
+<!-- SKILLS_TABLE_END -->
+
+</skills_system>
 EOF
 }
 

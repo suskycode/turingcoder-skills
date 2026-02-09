@@ -26,4 +26,4 @@ __BOOTSTRAP_CMD__
 
 4. Command policy reminder:
 - Use `npx openskills install https://github.com/suskycode/turingcoder-skills -u` only to install this integration skill.
-- Use `npx skills add ... --agent Antigravity` for skills discovered via `find-skills`.
+- Use `npx skills add ... --agent antigravity` for skills discovered via `find-skills`.
