@@ -24,8 +24,8 @@ This skill bootstraps skills capability for a TuringCoder project.
    - `find-skills`
    - `skill-creator`
    using:
-   - `npx skills add https://github.com/vercel-labs/skills --skill find-skills`
-   - `npx skills add https://github.com/anthropics/skills --skill skill-creator`
+   - `npx skills add https://github.com/vercel-labs/skills --skill find-skills --agent Antigravity`
+   - `npx skills add https://github.com/anthropics/skills --skill skill-creator --agent Antigravity`
 
 ## Hard failure rules
 

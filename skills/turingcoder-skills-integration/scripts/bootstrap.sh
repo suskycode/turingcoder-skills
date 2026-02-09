@@ -13,6 +13,7 @@ FIND_SKILLS_REPO="${FIND_SKILLS_REPO:-https://github.com/vercel-labs/skills}"
 FIND_SKILLS_NAME="${FIND_SKILLS_NAME:-find-skills}"
 SKILL_CREATOR_REPO="${SKILL_CREATOR_REPO:-https://github.com/anthropics/skills}"
 SKILL_CREATOR_NAME="${SKILL_CREATOR_NAME:-skill-creator}"
+TARGET_AGENT="${TARGET_AGENT:-Antigravity}"
 
 ensure_command() {
   local cmd="$1"
@@ -45,7 +46,7 @@ Usage notes:
 - Only use skills listed in <available_skills> below
 - Do not invoke a skill that is already loaded in your context
 - Each skill invocation is stateless
-- Skills found by `find-skills` must be installed via `npx skills add ...`
+- Skills found by `find-skills` must be installed via `npx skills add ... --agent Antigravity`
 </usage>
 EOF
 }
@@ -54,11 +55,11 @@ install_skill() {
   local repo="$1"
   local skill="$2"
 
-  echo "[INFO] Installing ${skill} from ${repo}..."
-  if ! npx skills add "${repo}" --skill "${skill}"; then
+  echo "[INFO] Installing ${skill} from ${repo} (agent: ${TARGET_AGENT})..."
+  if ! npx skills add "${repo}" --skill "${skill}" --agent "${TARGET_AGENT}"; then
     echo "[ERROR] Failed to install ${skill} from ${repo}." >&2
     echo "[ERROR] Retry manually with:" >&2
-    echo "  npx skills add ${repo} --skill ${skill}" >&2
+    echo "  npx skills add ${repo} --skill ${skill} --agent ${TARGET_AGENT}" >&2
     exit 1
   fi
 }
